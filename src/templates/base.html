@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Dummy description.">
+        <meta name="keywords" content="Keyword1, Keyword2, Keyword3">
+        <meta name="author" content="Mikel Valencia">
+        <title>Dummy Title</title>
+
+        {% block synchronousJS %}{% endblock synchronousJS %}
+
+        <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
+        {% block synchronousCSS %}{% endblock synchronousCSS %}
+
+    </head>
+    
+    <body>
+
+        {% block content %}
+        {% endblock content %}
+            
+    </body>
+    
+</html>
