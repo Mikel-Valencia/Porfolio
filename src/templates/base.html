@@ -11,19 +11,52 @@
         <meta name="description" content="Dummy description.">
         <meta name="keywords" content="Keyword1, Keyword2, Keyword3">
         <meta name="author" content="Mikel Valencia">
-        <title>Dummy Title</title>
+        <title>Mikel Valencia</title>
 
+        <script src="{% static 'css/partials/primary_header.js' %}" defer></script>
+        <script src="{% static 'css/partials/navbar.js' %}" defer></script>
+        <script src="{% static 'css/partials/hamburger.js' %}" defer></script>
         {% block synchronousJS %}{% endblock synchronousJS %}
 
-        <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+        <link rel="stylesheet" href="{% static 'css/partials/primary_header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/partials/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/partials/hamburger.css' %}">
         {% block synchronousCSS %}{% endblock synchronousCSS %}
 
     </head>
     
-    <body>
+    <body class="tw-overflow-x-hidden">
 
-        {% block content %}
-        {% endblock content %}
+        {% if request.get_full_path == "/" %}
+            {% include 'partials/splash_screen.html' %}
+        {% endif %}
+
+        <header id="primary-header" class="tw-fixed tw-z-1 tw-w-full">
+            <div class="tw-flex tw-items-center tw-justify-between tw-px-16 md-maxw:tw-pl-12 tw-py-12">
+                <a id="portfolio-logo" href="{% url 'index' %}">
+                    <svg viewBox="0 0 55 37" width="70">
+                        <path 
+                            d="m 2 32 c 10 6 9 2 15 -27 m -9 4 c 10 -16 12 4 12 23 c 0 0 0 -9 11 -23 l -3 25 h 6 m 7 -28 
+                            c -3 -6 9 -4 5 3 c -3 9 -33 13 -23 -1 c 4 -5 12 -10 18 26 l 8 -18 m -2 0 h 5"
+                            fill="none" stroke="black">
+                        </path>
+                    </svg>
+                </a>
+                {% include 'partials/hamburger.html' %}
+                {% include 'partials/navbar.html' %}
+            </div>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+        <footer class="tw-flex tw-flex-col tw-justify-center tw-items-center tw-bg-black tw-mt-4 tw-py-3">
+            <p class="tw-text-center tw-text-white tw-mb-2 tw-px-2">Copyright © 2023 Mikel Valencia. All rights reserved.</p>
+            <p class="tw-text-center tw-text-white tw-text-sm tw-m-0 tw-px-2">Built with Django, Tailwind CSS and JavaScript.</p>
+        </footer>
             
     </body>
     

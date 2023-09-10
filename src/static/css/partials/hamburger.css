@@ -1,0 +1,32 @@
+.hamburger-menu {
+    --animation-duration: 150ms;
+}
+
+.hamburger-menu .line {
+    transition: 
+        y var(--animation-duration) ease-in var(--animation-duration),
+        rotate var(--animation-duration) ease-in,
+        opacity 0ms var(--animation-duration);
+    ;
+    transform-origin: center;
+}
+.hamburger-menu[aria-expanded="true"] .line {
+    transition: 
+        y var(--animation-duration) ease-in,
+        rotate var(--animation-duration) ease-in var(--animation-duration),
+        opacity 0ms var(--animation-duration);
+    ;
+}
+
+.hamburger-menu[aria-expanded="true"] :is(.top, .bottom) {
+    y: 45;
+}
+.hamburger-menu[aria-expanded="true"] .top {
+    rotate: 45deg;
+}
+.hamburger-menu[aria-expanded="true"] .bottom {
+    rotate: -45deg;
+}
+.hamburger-menu[aria-expanded="true"] .middle {
+    opacity: 0;
+}

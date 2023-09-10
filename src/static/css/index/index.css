@@ -1,0 +1,25 @@
+.hero-section {
+    height: 100vh;
+    height: 100svh;
+}
+
+.download-CV::before {
+	content: "»";
+	font-size: 1.3rem;
+	position: absolute;
+	opacity: 0;
+	top: 47%;
+    right: .3rem;
+    transform: translateY(-50%);
+	transition: all 300ms ease-out;
+}
+.download-CV:hover::before {
+	opacity: 1;
+	right: .7rem;
+}
+.download-CV span {
+	transition: all 300ms ease-out;
+}
+.download-CV:hover span {
+	transform: translateX(-.5rem);
+}

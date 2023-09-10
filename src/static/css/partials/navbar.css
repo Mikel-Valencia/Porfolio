@@ -1,0 +1,11 @@
+#primary-navigation[data-visible="true"] {
+    transform: translateX(0%);
+}
+
+@media (max-width: 768px) {
+    #primary-navigation {
+        width: min(20rem, 100%);
+        padding: min(30vh, 10rem) 2rem;
+        transition: transform 300ms ease-out;
+    }
+}

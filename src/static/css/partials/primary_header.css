@@ -1,0 +1,42 @@
+/*
+Blur effect and shadow.
+The blur effect and box-shadow are applied to the ::after pseudoelement instead of applying directly into the header
+in order to improve animations' performance.
+*/
+#primary-header::after {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    --_header-bg: transparent;
+    background-color: var(--_header-bg);
+    -webkit-backdrop-filter: blur(var(--_header-blur));
+    backdrop-filter: blur(var(--_header-blur));
+
+    opacity: 0;
+    box-shadow: 0 .5rem 1rem -.25rem rgba(0, 0, 0, .3);
+
+    transition: background-color 200ms, opacity 200ms;
+
+}
+
+#primary-header.sticking::after {
+    --_header-bg: hsl(0 0% 0% / 0.5);
+}
+
+/* if backdrop support: blur effect */
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    #primary-header.sticking::after {
+        --_header-bg: hsl(0 0% 100% / 0.1);
+        --_header-blur: 1rem;
+    }
+}
+
+#primary-header.sticking::after {
+    opacity: 1;
+}
